@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fidans.online | Dijital Mağazanız</title>
+    <!-- Font Awesome ve Google Font -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Ana Stil Dosyası -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="assets/logo.svg" alt="Fidans.online Logo">
+                fidans.<span>online</span>
+            </a>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#marketplaces">Marketler</a></li>
+                <li><a href="#urunlerim">Ürünlerim</a></li>
+                <li><a href="#hakkimizda">Hakkımızda</a></li>
+                <li><a href="#iletisim">İletişim</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Dijital Mağazanız, <span>Her Platformda</span></h1>
+            <p>Amazon, Etsy, eBay ve Shopify'da ürünlerinizi keşfedin.</p>
+            <a href="#marketplaces" class="cta-button">Marketlere Göz At →</a>
+        </div>
+    </section>
+
+    <!-- Market Grid -->
+    <section id="marketplaces" class="market-grid">
+        <div class="container">
+            <h2 class="section-title">Marketler</h2>
+            <div class="markets">
+                <div class="market-card" onclick="window.open('https://ebay.com/fidans')">
+                    <img src="assets/ebay-icon.svg" alt="eBay">
+                    <h3>eBay Mağazamız</h3>
+                </div>
+                <div class="market-card" onclick="window.open('https://etsy.com/fidans')">
+                    <img src="assets/etsy-icon.svg" alt="Etsy">
+                    <h3>Etsy Mağazamız</h3>
+                </div>
+                <div class="market-card" onclick="window.open('https://amazon.com/fidans')">
+                    <img src="assets/amazon-icon.svg" alt="Amazon">
+                    <h3>Amazon Mağazamız</h3>
+                </div>
+                <div class="market-card" onclick="window.open('https://shopify.com/fidans')">
+                    <img src="assets/shopify-icon.svg" alt="Shopify">
+                    <h3>Shopify Mağazamız</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ürünlerim -->
+    <section id="urunlerim" class="products-section">
+        <div class="container">
+            <h2 class="section-title">Ürünlerim</h2>
+            <p class="section-desc">E-ticaret platformlarında satışta olan bazı ürün örnekleri:</p>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="assets/product1.jpg" alt="Ürün 1">
+                    <h3>Ürün 1</h3>
+                    <p class="price">₺99,99</p>
+                </div>
+                <div class="product-card">
+                    <img src="assets/product2.jpg" alt="Ürün 2">
+                    <h3>Ürün 2</h3>
+                    <p class="price">₺149,99</p>
+                </div>
+                <div class="product-card">
+                    <img src="assets/product3.jpg" alt="Ürün 3">
+                    <h3>Ürün 3</h3>
+                    <p class="price">₺89,99</p>
+                </div>
+                <div class="product-card">
+                    <img src="assets/product4.jpg" alt="Ürün 4">
+                    <h3>Ürün 4</h3>
+                    <p class="price">₺199,99</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hakkımızda -->
+    <section id="hakkimizda" class="about-section">
+        <div class="container">
+            <h2 class="section-title">Hakkımızda</h2>
+            <p class="section-desc">
+                fidans.online olarak, farklı e-ticaret platformlarında satış yapan girişimcilere 
+                rehberlik ve destek sunmayı amaçlıyoruz. Ürünlerinizi tek bir yerden yönetebilir, 
+                satış stratejilerinizi güçlendirebilir ve daha geniş kitlelere ulaşabilirsiniz.
+            </p>
+            <p class="section-desc">
+                Sektördeki deneyimimiz ve uzman ekibimizle, online mağazanızın büyümesine yardımcı olacak 
+                en iyi araçları sağlıyoruz.
+            </p>
+        </div>
+    </section>
+
+    <!-- İletişim -->
+    <section id="iletisim" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">İletişim</h2>
+            <p class="section-desc">Bizimle iletişime geçmekten çekinmeyin.</p>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> info@fidans.online</p>
+                    <p><i class="fas fa-phone"></i> +90 555 555 55 55</p>
+                    <p><i class="fas fa-map-marker-alt"></i> İstanbul, Türkiye</p>
+                </div>
+                <form class="contact-form">
+                    <input type="text" name="name" placeholder="Adınız" required>
+                    <input type="email" name="email" placeholder="E-posta" required>
+                    <textarea name="message" placeholder="Mesajınız" required></textarea>
+                    <button type="submit" class="cta-button">Gönder</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <p>© 2024 fidans.online | <a href="mailto:info@fidans.online">info@fidans.online</a></p>
+            <div class="social-icons">
+                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script Dosyası -->
+    <script src="script.js"></script>
+</body>
+</html>
