@@ -1,292 +1,149 @@
-// app.js
-document.addEventListener('DOMContentLoaded', () => {
-    // Animasyon Sistemleri
-    AOS.init({
-      duration: 800,
-      once: true,
-      easing: 'ease-in-out-quad'
-    });
-  
-    // Akıllı Navigasyon Scroll Etkisi
-    window.addEventListener('scroll', () => {
-      const nav = document.querySelector('.smart-nav');
-      if (window.scrollY > 100) {
-        nav.style.background = 'rgba(247, 250, 252, 0.98)';
-      } else {
-        nav.style.background = 'rgba(247, 250, 252, 0.95)';
-      }
-    });
-  
-    // AI Sohbet Sistemi
-    class AIChatSystem {
-      constructor() {
-        this.chatHistory = [];
-        this.initChat();
-      }
-  
-      initChat() {
-        const chatButton = document.querySelector('.ai-button');
-        const chatContainer = document.getElementById('ai-chat');
-  
-        chatButton.addEventListener('click', () => {
-          this.showLoadingState();
-          setTimeout(() => this.generateAIResponse(), 1500);
-        });
-      }
-  
-      showLoadingState() {
-        const chatContainer = document.getElementById('ai-chat');
-        chatContainer.innerHTML = `
-          <div class="ai-message loading">
-            <div class="dot-flashing"></div>
-          </div>
-        `;
-      }
-  
-      generateAIResponse() {
-        const responses = [
-          "Mevcut satış verilerinize göre optimize öneriler:",
-          "SEO skorunuz: 92/100 - Detaylı analiz için tıklayın",
-          "Amazon envanteriniz 3 gün içinde tükenecek!"
-        ];
-  
-        const chatContainer = document.getElementById('ai-chat');
-        chatContainer.innerHTML = responses.map(msg => `
-          <div class="ai-message" data-aos="fade-up">
-            <i class="fas fa-robot"></i>
-            <div class="message-content">${msg}</div>
-          </div>
-        `).join('');
-      }
-    }
-  
-    // Platform Entegrasyon Yöneticisi
-    class PlatformManager {
-      constructor() {
-        this.initPlatformCards();
-      }
-  
-      initPlatformCards() {
-        document.querySelectorAll('.platform-card').forEach(card => {
-          card.addEventListener('click', (e) => {
-            if (!e.target.closest('a')) {
-              this.showPlatformModal(card.querySelector('h3').textContent);
-            }
-          });
-        });
-      }
-  
-      showPlatformModal(platform) {
-        const modalContent = {
-          'Google Business': 'Google My Business verileriniz gerçek zamanlı senkronize ediliyor...',
-          'Shopify Pro': 'Mağaza performans raporunuz hazırlanıyor',
-          'Amazon FBA': 'Envanter optimizasyon önerileri analiz ediliyor'
-        };
-  
-        const modal = document.createElement('div');
-        modal.className = 'platform-modal';
-        modal.innerHTML = `
-          <div class="modal-content">
-            <h3>${platform} Analiz</h3>
-            <p>${modalContent[platform]}</p>
-            <div class="loading-bar"></div>
-          </div>
-        `;
-        
-        document.body.appendChild(modal);
-        setTimeout(() => modal.remove(), 3000);
-      }
-    }
-  
-    // Sistemleri Başlat
-    new AIChatSystem();
-    new PlatformManager();
-  
-    // Gerçek Zamanlı SEO Analiz
-    const seoTags = document.querySelectorAll('.keyword-tag');
-    seoTags.forEach(tag => {
-      tag.addEventListener('click', () => {
-        const keyword = tag.textContent;
-        window.open(`https://ads.google.com/intl/tr_tr/home/?subid=tr-tr-aw-et-ga-biz1-g-c!o3${encodeURIComponent(keyword)}`, '_blank');
-      });
-    });
-  });// Mobil menüyü açıp kapama
-  const menuToggle = document.getElementById('mobile-menu');
-  const navLinks = document.getElementById('nav-links');
-  
-  menuToggle.addEventListener('click', () => {
-      navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-  });
-  
-  // Basit bir form mesajı göstermek isterseniz
-  const contactForm = document.querySelector('.contact-form');
-  if (contactForm) {
-      contactForm.addEventListener('submit', (e) => {
-          e.preventDefault();
-          alert("Mesajınız gönderildi! En kısa sürede dönüş yapacağız.");
-          contactForm.reset();
-      });
-  }/* 
-  script.js 
-  - Mobil menü aç/kapat 
-  - AOS init 
-  - Bülten modal aç/kapat
-  - Basit sepet mantığı 
-  - İletişim formu 
+/* script.js 
+   - Hamburger menü (X animasyonu + slide in/out menü)
+   - Gelişmiş Form İşleme (fetch POST, reCAPTCHA yerleştirme placeholder)
+   - Lazy loading (HTML tarafında <img loading="lazy">)
+   - Basit i18n (dil sözlüğü)
 */
 
-// 1. MOBİL MENÜ
-const menuToggle = document.getElementById('mobile-menu');
-const navLinks = document.getElementById('nav-links');
+// Eleman seçiciler
+const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+const navbar = document.getElementById('navbar');
+const contactForm = document.getElementById('contact-form');
+const formResponse = document.getElementById('form-response');
 
-menuToggle.addEventListener('click', () => {
-  if (navLinks.style.display === 'flex') {
-    navLinks.style.display = 'none';
+// Hamburger Menü Aç/Kapat
+mobileMenuIcon.addEventListener('click', () => {
+  // İkonun çubuklarını X'e çevirmek için "open" class ekliyoruz
+  mobileMenuIcon.classList.toggle('open');
+  
+  // Menü animasyonu için .open ekleyebiliriz
+  if (navbar.style.display === 'flex') {
+    navbar.style.display = 'none';
   } else {
-    navLinks.style.display = 'flex';
+    navbar.style.display = 'flex';
   }
 });
 
-// 2. AOS (Animate On Scroll) Başlatma
-AOS.init({
-  duration: 1000, // animasyon süresi (ms)
-  offset: 100,    // scroll başladığı mesafe
-});
-
-// 3. BÜLTEN MODALI
-const subscribeBtn = document.getElementById('subscribe-button');
-const modalOverlay = document.getElementById('modal-overlay');
-const closeModalBtn = document.getElementById('close-modal');
-const newsletterForm = document.getElementById('newsletter-form');
-
-if (subscribeBtn) {
-  subscribeBtn.addEventListener('click', () => {
-    modalOverlay.style.display = 'flex';
-  });
-}
-
-if (closeModalBtn) {
-  closeModalBtn.addEventListener('click', () => {
-    modalOverlay.style.display = 'none';
-  });
-}
-
-if (newsletterForm) {
-  newsletterForm.addEventListener('submit', (e) => {
+// Form Gönderme (örnek)
+if (contactForm) {
+  contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    alert("Bültene kaydınız alınmıştır. Teşekkürler!");
-    modalOverlay.style.display = 'none';
-    newsletterForm.reset();
+
+    // reCAPTCHA kontrolü (V2 ise):
+    // let recaptcha = document.querySelector('.g-recaptcha-response');
+    // if (!recaptcha || recaptcha.value === "") {
+    //   formResponse.innerText = "Please verify you're not a robot.";
+    //   return;
+    // }
+
+    const formData = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      message: e.target.message.value
+    };
+
+    // Örnek fetch post
+    // Sunucunuzun endpoint URL'sini girmeniz gerekir (ör: /api/contact).
+    try {
+      /*
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      if (res.ok) {
+        formResponse.innerText = "Your message has been sent successfully!";
+        contactForm.reset();
+      } else {
+        formResponse.innerText = "Error sending message. Please try again later.";
+      }
+      */
+     
+      // Demo amaçlı sadece mesaj basıyor
+      formResponse.innerText = "Your message has been sent successfully!";
+      contactForm.reset();
+    } catch (err) {
+      formResponse.innerText = "An error occurred. Please try again.";
+    }
   });
 }
 
-// 4. BASİT SEPET MANTIĞI (Front-End)
-const cartIcon = document.getElementById('cart-icon');
-const cartOverlay = document.getElementById('cart-overlay');
-const closeCartBtn = document.getElementById('close-cart');
-const cartItemsContainer = document.getElementById('cart-items');
-const cartTotal = document.getElementById('cart-total');
-const cartCount = document.getElementById('cart-count');
-const checkoutBtn = document.getElementById('checkout-btn');
-
-// "Ürün veritabanı" gibi davranan bir örnek obje:
-const productsData = {
-  1: { name: 'Ürün 1', price: 99.99 },
-  2: { name: 'Ürün 2', price: 149.99 },
-  3: { name: 'Ürün 3', price: 89.99 },
-  4: { name: 'Ürün 4', price: 199.99 },
+/* Basit i18n Sözlük */
+const i18nStrings = {
+  en: {
+    "nav.home": "Home",
+    "nav.about": "About Us",
+    "nav.services": "Services",
+    "nav.contact": "Contact",
+    "hero.title": "Future-Ready Digital Solutions",
+    "hero.subtitle": "We design and deliver cutting-edge e-commerce and consulting services...",
+    "hero.cta": "Learn More",
+    "about.title": "About Us",
+    "about.text": "At Fidans Online, we blend family legacy and innovation...",
+    "services.title": "Our Services",
+    "services.ecommerce": "E-Commerce Solutions",
+    "services.ecommerceText": "From secure payment gateways to scalable storefronts...",
+    "services.consulting": "Consulting & Strategy",
+    "services.consultingText": "Our experts guide you in digital marketing...",
+    "services.performance": "Performance & SEO",
+    "services.performanceText": "Boost your site's speed and visibility...",
+    "contact.title": "Contact Us",
+    "contact.text": "Connect with us at info@fidans.online or visit our warehouse at [Address].",
+    "form.name": "Name",
+    "form.email": "Email",
+    "form.message": "Message",
+    "form.submit": "Send Message",
+    "footer.rights": "All rights reserved.",
+    "footer.gdpr": "Adhering to GDPR/KVKK and global data protection standards."
+  },
+  tr: {
+    "nav.home": "Anasayfa",
+    "nav.about": "Hakkımızda",
+    "nav.services": "Hizmetler",
+    "nav.contact": "İletişim",
+    "hero.title": "Geleceğe Hazır Dijital Çözümler",
+    "hero.subtitle": "E-ticaret ve danışmanlık hizmetlerini en ileri düzeyde sunuyor...",
+    "hero.cta": "Daha Fazla",
+    "about.title": "Hakkımızda",
+    "about.text": "Fidans Online olarak aile mirası ve inovasyonu harmanlıyoruz...",
+    "services.title": "Hizmetlerimiz",
+    "services.ecommerce": "E-Ticaret Çözümleri",
+    "services.ecommerceText": "Güvenli ödeme altyapısından ölçeklenebilir mağaza tasarımlarına kadar...",
+    "services.consulting": "Danışmanlık & Strateji",
+    "services.consultingText": "Dijital pazarlama, lojistik ve büyüme stratejilerinde uzman ekibimizle...",
+    "services.performance": "Performans & SEO",
+    "services.performanceText": "Core Web Vitals optimizasyonu ile sitenizin hız ve görünürlüğünü artırın...",
+    "contact.title": "İletişim",
+    "contact.text": "Bize info@fidans.online üzerinden veya [Adres] konumunda ulaşabilirsiniz.",
+    "form.name": "Ad",
+    "form.email": "E-posta",
+    "form.message": "Mesaj",
+    "form.submit": "Gönder",
+    "footer.rights": "Tüm hakları saklıdır.",
+    "footer.gdpr": "GDPR/KVKK ve küresel veri koruma standartlarına uyuyoruz."
+  }
 };
 
-// Sepet içeriği (productId -> quantity):
-let cart = {};
-
-// Sepet açma/kapama
-if (cartIcon) {
-  cartIcon.addEventListener('click', () => {
-    cartOverlay.style.display = 'flex';
-    renderCart();
+function changeLang(lang) {
+  const elements = document.querySelectorAll('[data-i18n]');
+  elements.forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (i18nStrings[lang] && i18nStrings[lang][key]) {
+      el.textContent = i18nStrings[lang][key];
+    }
   });
 }
 
-if (closeCartBtn) {
-  closeCartBtn.addEventListener('click', () => {
-    cartOverlay.style.display = 'none';
-  });
-}
-
-// Sepete Ekle butonları
-const addToCartButtons = document.querySelectorAll('.add-to-cart');
-addToCartButtons.forEach((btn) => {
-  btn.addEventListener('click', () => {
-    const productId = btn.getAttribute('data-product-id');
-    addToCart(productId);
+// Basit Scroll Animasyonu
+window.addEventListener('scroll', () => {
+  const fadeUpElements = document.querySelectorAll('.fade-in-up');
+  fadeUpElements.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.75) {
+      el.classList.add('scroll-visible');
+    }
   });
 });
 
-function addToCart(productId) {
-  if (!cart[productId]) {
-    cart[productId] = 1;
-  } else {
-    cart[productId]++;
-  }
-  updateCartCount();
-  alert(`${productsData[productId].name} sepete eklendi!`);
-}
-
-// Sepet öğelerini render etme
-function renderCart() {
-  cartItemsContainer.innerHTML = ''; 
-  let totalPrice = 0;
-
-  for (let id in cart) {
-    const quantity = cart[id];
-    const product = productsData[id];
-    const itemPrice = product.price * quantity;
-    totalPrice += itemPrice;
-
-    const cartItemDiv = document.createElement('div');
-    cartItemDiv.classList.add('cart-item');
-    cartItemDiv.innerHTML = `
-      <p>${product.name} (x${quantity})</p>
-      <p>₺${itemPrice.toFixed(2)}</p>
-    `;
-    cartItemsContainer.appendChild(cartItemDiv);
-  }
-
-  cartTotal.innerText = `Toplam: ₺${totalPrice.toFixed(2)}`;
-}
-
-// Sepet simgesindeki adet gösterimi
-function updateCartCount() {
-  let count = 0;
-  for (let id in cart) {
-    count += cart[id];
-  }
-  cartCount.innerText = count;
-}
-
-// Basit "Satın Al" butonu
-if (checkoutBtn) {
-  checkoutBtn.addEventListener('click', () => {
-    if (Object.keys(cart).length === 0) {
-      alert('Sepetiniz boş!');
-      return;
-    }
-    // Burada gerçek ödeme entegrasyonu (Stripe/PayPal vs.) devreye girebilir.
-    alert('Satın alma işlemi simüle edildi. Ödeme entegrasyonu eklemeyi unutmayın!');
-    cart = {}; // sepeti temizle
-    updateCartCount();
-    renderCart();
-    cartOverlay.style.display = 'none';
-  });
-}
-
-// 5. İLETİŞİM FORMU (Basit Uyarı)
-const contactForm = document.querySelector('.contact-form');
-if (contactForm) {
-  contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    alert("Mesajınız gönderildi! En kısa sürede dönüş yapacağız.");
-    contactForm.reset();
-  });
-}
+// Sayfa yüklendiğinde ilk scroll tetikleyelim
+window.dispatchEvent(new Event('scroll'));
