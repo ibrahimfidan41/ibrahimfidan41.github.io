@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+    "target": "esnext",               // Modern ES özellikleri için
+    "lib": ["dom", "dom.iterable", "esnext", "es2022"], // Güncel ECMAScript özellikleri
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,                   // Güçlü tip güvenliği için
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "jsx": "preserve",
+    "incremental": true,              // Daha hızlı derlemeler için
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    
+    // Modern TypeScript özellikleri
+    "noUncheckedIndexedAccess": true, // Dizi indekslerinde null kontrolü
+    "exactOptionalPropertyTypes": true,
+    "strictNullChecks": true,
+    
+    // Path alias'ları (proje yapınıza göre özelleştirin)
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./app/*"],
+      "@/components/*": ["./app/components/*"],
+      "@/public/*": ["./public/*"]
+    },
+    
+    // Linter entegrasyonu
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.d.ts"          // Next.js tip tanımlamaları
+  ],
+  "exclude": [
+    "node_modules",
+    ".next",
+    "out"
+  ]
+}
