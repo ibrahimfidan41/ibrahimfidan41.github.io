@@ -146,4 +146,272 @@
     <!-- Script Dosyası -->
     <script src="script.js"></script>
 </body>
+</html><!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>fidans.online | Dijital Mağazanız</title>
+
+  <!-- Google Fonts & Font Awesome -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  />
+
+  <!-- AOS Animations CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+  />
+
+  <!-- Site Stil Dosyası -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Google Analytics (Placeholder) -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXX');
+  </script>
+  -->
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="/" class="logo">
+        <img src="assets/logo.svg" alt="Fidans.online Logo" />
+        fidans.<span>online</span>
+      </a>
+      <div class="menu-toggle" id="mobile-menu">
+        <i class="fas fa-bars"></i>
+      </div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#hero">Ana Sayfa</a></li>
+        <li><a href="#marketplaces">Marketler</a></li>
+        <li><a href="#urunlerim">Ürünlerim</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#iletisim">İletişim</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="container hero-content">
+      <h1 data-aos="fade-up">
+        Dijital Mağazanız,<br />
+        <span>Her Platformda</span>
+      </h1>
+      <p data-aos="fade-up" data-aos-delay="200">
+        Etsy, eBay, Amazon, Shopify... Tüm pazar yerlerinde büyümek için hazırsınız!
+      </p>
+      <button class="cta-button" data-aos="fade-up" data-aos-delay="400" id="subscribe-button">
+        Bültene Katıl
+      </button>
+    </div>
+  </section>
+
+  <!-- Market Grid -->
+  <section id="marketplaces" class="market-grid">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">Marketler</h2>
+      <div class="markets">
+        <div class="market-card" data-aos="fade-up">
+          <img src="assets/etsy-icon.svg" alt="Etsy" />
+          <h3>Etsy Mağazamız</h3>
+          <button class="cta-button small" onclick="window.open('https://etsy.com/fidans','_blank')">
+            İncele
+          </button>
+        </div>
+        <div class="market-card" data-aos="fade-up" data-aos-delay="100">
+          <img src="assets/ebay-icon.svg" alt="eBay" />
+          <h3>eBay Mağazamız</h3>
+          <button class="cta-button small" onclick="window.open('https://ebay.com/fidans','_blank')">
+            İncele
+          </button>
+        </div>
+        <div class="market-card" data-aos="fade-up" data-aos-delay="200">
+          <img src="assets/amazon-icon.svg" alt="Amazon" />
+          <h3>Amazon Mağazamız</h3>
+          <button class="cta-button small" onclick="window.open('https://amazon.com/fidans','_blank')">
+            İncele
+          </button>
+        </div>
+        <div class="market-card" data-aos="fade-up" data-aos-delay="300">
+          <img src="assets/shopify-icon.svg" alt="Shopify" />
+          <h3>Shopify Mağazamız</h3>
+          <button class="cta-button small" onclick="window.open('https://shopify.com/fidans','_blank')">
+            İncele
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ürünlerim (Basit Alışveriş Sepeti Örneği) -->
+  <section id="urunlerim" class="products-section">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">Ürünlerim</h2>
+      <p class="section-desc" data-aos="fade-up" data-aos-delay="100">
+        Sitemizde en popüler ürünlerimizi hemen keşfedin.
+      </p>
+      <div class="products-grid">
+        <!-- Ürün 1 -->
+        <div class="product-card" data-aos="fade-up">
+          <img src="assets/product1.jpg" alt="Ürün 1" />
+          <h3>Ürün 1</h3>
+          <p class="price">₺99,99</p>
+          <button class="cta-button small add-to-cart" data-product-id="1">
+            Sepete Ekle
+          </button>
+        </div>
+        <!-- Ürün 2 -->
+        <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+          <img src="assets/product2.jpg" alt="Ürün 2" />
+          <h3>Ürün 2</h3>
+          <p class="price">₺149,99</p>
+          <button class="cta-button small add-to-cart" data-product-id="2">
+            Sepete Ekle
+          </button>
+        </div>
+        <!-- Ürün 3 -->
+        <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+          <img src="assets/product3.jpg" alt="Ürün 3" />
+          <h3>Ürün 3</h3>
+          <p class="price">₺89,99</p>
+          <button class="cta-button small add-to-cart" data-product-id="3">
+            Sepete Ekle
+          </button>
+        </div>
+        <!-- Ürün 4 -->
+        <div class="product-card" data-aos="fade-up" data-aos-delay="300">
+          <img src="assets/product4.jpg" alt="Ürün 4" />
+          <h3>Ürün 4</h3>
+          <p class="price">₺199,99</p>
+          <button class="cta-button small add-to-cart" data-product-id="4">
+            Sepete Ekle
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Basit Alışveriş Sepeti Modalı -->
+  <div class="cart-overlay" id="cart-overlay">
+    <div class="cart-modal">
+      <span class="close-cart" id="close-cart">&times;</span>
+      <h2>Sepetiniz</h2>
+      <div class="cart-items" id="cart-items"><!-- JS ile doldurulacak --></div>
+      <div class="cart-total" id="cart-total"></div>
+      <button class="cta-button" id="checkout-btn">Satın Al</button>
+    </div>
+  </div>
+
+  <!-- Blog Bölümü -->
+  <section id="blog" class="blog-section">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">Blog</h2>
+      <p class="section-desc" data-aos="fade-up" data-aos-delay="100">
+        E-ticaret ipuçları, pazar yeri stratejileri ve daha fazlasını burada paylaşacağız.
+      </p>
+      <div class="blog-grid">
+        <article class="blog-post" data-aos="fade-up">
+          <img src="assets/blog1.jpg" alt="Blog 1" />
+          <h3>Etsy’de Nasıl Daha Fazla Satış Yapılır?</h3>
+          <p>
+            Etsy’de dükkan açmanın püf noktalarından ve satış artırma taktiklerinden bahsettik...
+          </p>
+          <a href="#" class="readmore">Devamını Oku</a>
+        </article>
+        <article class="blog-post" data-aos="fade-up" data-aos-delay="100">
+          <img src="assets/blog2.jpg" alt="Blog 2" />
+          <h3>Amazon FBA ile Küresel Pazara Açılın</h3>
+          <p>
+            Amazon FBA programıyla lojistik işlemleriniz kolaylaşırken daha geniş kitlelere ulaşabilirsiniz...
+          </p>
+          <a href="#" class="readmore">Devamını Oku</a>
+        </article>
+        <article class="blog-post" data-aos="fade-up" data-aos-delay="200">
+          <img src="assets/blog3.jpg" alt="Blog 3" />
+          <h3>Shopify İpuçları ve Tema Seçimi</h3>
+          <p>
+            Online mağazanızı Shopify ile kurarken dikkat etmeniz gerekenler ve öne çıkan tema önerileri...
+          </p>
+          <a href="#" class="readmore">Devamını Oku</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- İletişim -->
+  <section id="iletisim" class="contact-section">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">İletişim</h2>
+      <p class="section-desc" data-aos="fade-up" data-aos-delay="100">
+        Bizimle iletişime geçmekten çekinmeyin.
+      </p>
+      <div class="contact-grid">
+        <div class="contact-info" data-aos="fade-up">
+          <p><i class="fas fa-envelope"></i> info@fidans.online</p>
+          <p><i class="fas fa-phone"></i> +90 555 555 55 55</p>
+          <p><i class="fas fa-map-marker-alt"></i> İstanbul, Türkiye</p>
+        </div>
+        <form class="contact-form" data-aos="fade-up" data-aos-delay="100">
+          <input type="text" name="name" placeholder="Adınız" required />
+          <input type="email" name="email" placeholder="E-posta" required />
+          <textarea name="message" placeholder="Mesajınız" required></textarea>
+          <button type="submit" class="cta-button">Gönder</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-content">
+      <p>
+        © 2025 fidans.online | <a href="mailto:info@fidans.online">info@fidans.online</a>
+      </p>
+      <div class="social-icons">
+        <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+      </div>
+      <div class="cart-icon" id="cart-icon" title="Sepetinizi görüntüleyin">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count" id="cart-count">0</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bülten Kayıt Modal -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+      <span class="close-modal" id="close-modal">&times;</span>
+      <h2>E-posta Bülteni</h2>
+      <p>Yeni ürünlerden, kampanyalardan ve özel duyurulardan ilk siz haberdar olun!</p>
+      <form id="newsletter-form">
+        <input type="email" name="email" placeholder="E-posta adresiniz" required />
+        <button type="submit" class="cta-button">Kayıt Ol</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- AOS Animations JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- Site Genel Script Dosyası -->
+  <script src="script.js"></script>
+</body>
 </html>
